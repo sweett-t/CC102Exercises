@@ -16,13 +16,13 @@ int main() {
         char continueInput;
 
         do {
-            cout << "\nEnter Salesperson (1-4): ";
+            cout << "\nEnter Salesperson Number (1-4): ";
             cin >> salespersonNumber;
 
-            cout << "Enter Product (1-5): ";
+            cout << "Enter Product Number (1-5): ";
             cin >> productNumber;
 
-            cout << "Enter Amount: ";
+            cout << "Enter Dollar Amount Sold: ";
             cin >> amount;
 
             sales[productNumber - 1][salespersonNumber - 1] += amount;
@@ -32,36 +32,38 @@ int main() {
 
         } while (continueInput == 'y' || continueInput == 'Y');
 
-
-        cout << "\nProduct\t";
+        cout << "\n";
+        cout << setw(10) << "Product";
 
         for (int sp = 0; sp < numberOfSalespeople; sp++) {
-            cout << "S" << sp + 1 << "\t";
+            cout << setw(10) << sp + 1;
         }
 
-        cout << "Total\n";
+        cout << setw(12) << "Total" << endl;
+
+        cout << "--------------------------------------------------\n";
 
         double grandTotal = 0;
-
 
         for (int product = 0; product < numberOfProducts; product++) {
             double rowTotal = 0;
 
-            cout << product + 1 << "\t";
+            cout << setw(10) << product + 1;
 
             for (int sp = 0; sp < numberOfSalespeople; sp++) {
-                cout << fixed << setprecision(2)
-                     << sales[product][sp] << "\t";
+                cout << setw(10) << fixed << setprecision(2)
+                     << sales[product][sp];
 
                 rowTotal += sales[product][sp];
             }
 
-            cout << rowTotal << endl;
+            cout << setw(12) << rowTotal << endl;
             grandTotal += rowTotal;
         }
 
+        cout << "--------------------------------------------------\n";
 
-        cout << "Total\t";
+        cout << setw(10) << "Total";
 
         for (int sp = 0; sp < numberOfSalespeople; sp++) {
             double columnTotal = 0;
@@ -70,10 +72,10 @@ int main() {
                 columnTotal += sales[product][sp];
             }
 
-            cout << columnTotal << "\t";
+            cout << setw(10) << columnTotal;
         }
 
-        cout << grandTotal << endl;
+        cout << setw(12) << grandTotal << endl;
 
         cout << "\nRun program again? (y/n): ";
         cin >> runAgain;
