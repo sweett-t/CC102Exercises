@@ -17,7 +17,6 @@ int main() {
         double quizScores[numberOfStudents][numberOfQuizzes];
         double studentAverage[numberOfStudents];
 
-        // Input scores
         for (int student = 0; student < numberOfStudents; student++) {
             cout << "\nEnter scores for Student " << student + 1 << endl;
 
@@ -32,22 +31,25 @@ int main() {
             studentAverage[student] = total / numberOfQuizzes;
         }
 
-        cout << "\nStudent\t";
+        cout << "\n";
+        cout << setw(8) << "Student";
 
         for (int quiz = 0; quiz < numberOfQuizzes; quiz++) {
-            cout << "Q" << quiz + 1 << "\t";
+            cout << setw(8) << ("Q" + to_string(quiz + 1));
         }
 
-        cout << "Average\n";
+        cout << setw(10) << "Average" << endl;
+
+        cout << "---------------------------------------------\n";
 
         for (int student = 0; student < numberOfStudents; student++) {
-            cout << student + 1 << "\t";
+            cout << setw(8) << student + 1;
 
             for (int quiz = 0; quiz < numberOfQuizzes; quiz++) {
-                cout << quizScores[student][quiz] << "\t";
+                cout << setw(8) << quizScores[student][quiz];
             }
 
-            cout << fixed << setprecision(2)
+            cout << setw(10) << fixed << setprecision(2)
                  << studentAverage[student] << endl;
         }
 
